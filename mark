@@ -1,0 +1,72 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        // Input section
+        System.out.print("Enter Student Name: ");
+        String name = input.nextLine();
+
+        System.out.print("Enter Roll Number: ");
+        String rollNo = input.nextLine();
+
+        int theoryMarks[] = new int[5];
+        int labMarks[] = new int[3];
+        int total = 0;
+
+        System.out.println("\nEnter marks for 5 Theory Subjects:");
+        for (int i = 0; i < 5; i++) {
+            System.out.print("Theory Subject " + (i + 1) + " Marks: ");
+            theoryMarks[i] = input.nextInt();
+            total += theoryMarks[i];
+        }
+
+        System.out.println("\nEnter marks for 3 Lab Exams:");
+        for (int i = 0; i < 3; i++) {
+            System.out.print("Lab Exam " + (i + 1) + " Marks: ");
+            labMarks[i] = input.nextInt();
+            total += labMarks[i];
+        }
+
+        // Calculations
+        int totalSubjects = 5 + 3;
+        double average = (double) total / totalSubjects;
+        String grade;
+
+        if (average >= 90)
+            grade = "A+";
+        else if (average >= 80)
+            grade = "A";
+        else if (average >= 70)
+            grade = "B";
+        else if (average >= 60)
+            grade = "C";
+        else if (average >= 50)
+            grade = "D";
+        else
+            grade = "Fail";
+
+        // Output section
+        System.out.println("\n----------- MARK SHEET -----------");
+        System.out.println("Name        : " + name);
+        System.out.println("Roll Number : " + rollNo);
+
+        System.out.println("\nTheory Marks:");
+        for (int i = 0; i < 5; i++) {
+            System.out.println("  Subject " + (i + 1) + ": " + theoryMarks[i]);
+        }
+
+        System.out.println("\nLab Marks:");
+        for (int i = 0; i < 3; i++) {
+            System.out.println("  Lab " + (i + 1) + ": " + labMarks[i]);
+        }
+
+        System.out.println("\nTotal Marks : " + total);
+        System.out.println("Average     : " + String.format("%.2f", average));
+        System.out.println("Grade       : " + grade);
+        System.out.println("----------------------------------");
+
+        input.close();
+    }
+}
